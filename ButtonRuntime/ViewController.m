@@ -7,7 +7,7 @@
 //
 
 #import "ViewController.h"
-
+#import "UIButton+HTBtnTimer.h"
 @interface ViewController ()
 
 @end
@@ -16,8 +16,21 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    self.view.backgroundColor = [UIColor whiteColor];
+    
+    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+    btn.backgroundColor = [UIColor redColor];
+    [btn setTitle:@"点击" forState:UIControlStateNormal];
+    [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    btn.frame = CGRectMake(50, 200, 100, 50);
+    [self.view addSubview:btn];
+    btn.eventTimeInterval = 3.0;
+    [btn addTarget:self action:@selector(clickBtn) forControlEvents:UIControlEventTouchUpInside];
+    
 }
 
+- (void)clickBtn {
+    NSLog(@"点击");
+}
 
 @end
